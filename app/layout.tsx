@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "tk: empieza proyectos con agentes, sin partir de cero",
+  title: "tk: proyectos con agentes",
   description:
     "Un comando que monta tu proyecto para Claude Code, Codex o Hermes: módulos, skills explicadas y un cierre de sesión que deja dicho qué sigue.",
 };
