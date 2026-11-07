@@ -14,12 +14,14 @@ const skills = Object.values(catalog.skills) as Skill[];
 const moduleTitle = (id: string) => (catalog.modules as Record<string, Module>)[id]?.title ?? id;
 const ownSkills = skills.filter((s) => s.origen === "propia").length;
 
-// Iconos de agente tal cual los muestra skills.sh (marquesina de su portada), sin alterar.
-// Las marcas son de sus dueños; se usan solo para decir con qué funciona tk.
-const AGENTS = [
-  { name: "Claude Code", logo: "/agents/claude-code.svg" },
-  { name: "Codex", logo: "/agents/codex.svg" },
-  { name: "Hermes", logo: "/agents/nous-research.svg" },
+// Solo el símbolo de cada marca, sin fondo: Claude y Codex sacados de los iconos de skills.sh
+// (el trazo, sin el cuadro), Claude en su naranja y Codex en blanco y negro (OpenAI no admite
+// colores); Hermes es la ilustración oficial de su repo (MIT). Las marcas son de sus dueños y
+// se usan solo para decir con qué funciona tk.
+const AGENTS: { name: string; light: string; dark?: string }[] = [
+  { name: "Claude Code", light: "/agents/claude.svg" },
+  { name: "Codex", light: "/agents/codex-black.svg", dark: "/agents/codex-white.svg" },
+  { name: "Hermes", light: "/agents/hermes-black.svg", dark: "/agents/hermes-white.svg" },
 ];
 
 function Section({ id, eyebrow, title, lead, children }: { id: string; eyebrow: string; title: string; lead?: string; children: React.ReactNode }) {
@@ -119,17 +121,14 @@ export default function Home() {
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-8 gap-y-4 px-6 pb-8">
           <span className="text-[14px] text-text-muted">Funciona con</span>
           {AGENTS.map((a) => (
-            <span key={a.name} className="group inline-flex items-center gap-3 text-[16px] font-semibold text-ink">
-              {/* Icono en squircle (30% de radio, DESIGN.md). Gris en reposo y color al pasar,
-                  como en skills.sh; el borde fino lo separa del fondo en modo oscuro. */}
+            <span key={a.name} className="inline-flex items-center gap-2.5 text-[16px] font-semibold text-ink">
+              {/* Símbolo de la marca, sin caja, a la altura del texto */}
               {/* eslint-disable-next-line @next/next/no-img-element -- SVG de marca, sin optimizar a propósito */}
-              <img
-                src={a.logo}
-                alt=""
-                width={40}
-                height={40}
-                className="size-10 rounded-[30%] grayscale transition-[filter] duration-300 group-hover:grayscale-0 dark:ring-1 dark:ring-hairline"
-              />
+              <img src={a.light} alt="" width={24} height={24} className={a.dark ? "size-6 dark:hidden" : "size-6"} />
+              {a.dark ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={a.dark} alt="" width={24} height={24} className="hidden size-6 dark:block" />
+              ) : null}
               {a.name}
             </span>
           ))}

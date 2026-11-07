@@ -8,8 +8,9 @@
 > - El contenido que aporta el "color" son bloques de terminal y código, no capturas de apps.
 > - `{colors.accent}` (#0066ff) solo para una señal: el aviso "Próximamente en npm". Nunca en CTAs.
 > - Sin raya larga en ningún texto (se han cambiado por dos puntos en este documento).
-> - Logos de agentes ("Funciona con"): el oficial de cada marca, sin alterar, dentro de un
->   squircle `{colors.canvas-soft}` al 30%. Son el único color aparte de la terminal.
+> - Logos de agentes ("Funciona con"): solo el símbolo oficial de cada marca, sin caja ni
+>   fondo, a 24px junto al nombre. Claude en su naranja; Codex y Hermes en negro (blanco en
+>   oscuro). Son el único color aparte de la terminal.
 
 ## Modo oscuro (derivado, pendiente de revisar por Manuel)
 
