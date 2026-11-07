@@ -95,6 +95,7 @@
       "costs": "Dependencias de shadcn y @shadcn/lint; definir DESIGN.md antes de la primera pantalla",
       "requires": [],
       "skills": [
+        "diseno-propio",
         "shadcn",
         "design-taste-frontend",
         "emil-design-eng",
@@ -489,12 +490,28 @@
       "licencia": "MIT",
       "verificado": "2026-11-07"
     },
+    "diseno-propio": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": null,
+      "id": "diseno-propio",
+      "para_que": "Toda la UI sale de DESIGN.md; si falta un token se pregunta; checklist anti-genérico",
+      "origen": "propia",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "obligatoria",
+      "licencia": "MIT"
+    },
     "design-taste-frontend": {
       "conflicts_with": [],
       "plugin_claude": null,
       "instalar": "npx skills add Leonxlnx/taste-skill --skill design-taste-frontend {agentes}",
       "id": "design-taste-frontend",
-      "para_que": "Evita interfaces genéricas (\"anti-slop\") con criterio de diseño",
+      "para_que": "Criterio anti-genérico para quien no tiene sistema de diseño (elige paletas por su cuenta)",
       "origen": "externa",
       "repo": "Leonxlnx/taste-skill",
       "scope": "proyecto",
@@ -503,7 +520,8 @@
           "diseno"
         ]
       },
-      "nivel": "recomendada",
+      "nivel": "opcional",
+      "aviso": "skills.sh la evalúa como riesgo crítico (Gen) y medio (Snyk) a 2026-11-07: ~1.600 ficheros, lanza Chrome sin ventana y descarga de CDNs. Choca con un DESIGN.md propio.",
       "licencia": "MIT",
       "verificado": "2026-11-07"
     },

@@ -1,4 +1,9 @@
 import catalog from "@/content/catalog.json";
+import {
+  Atom, Blocks, BookOpenText, Bot, CreditCard, Database, FlaskConical, FolderCheck, GitBranch,
+  KeyRound, Mail, Map, MessagesSquare, Package, Palette, Scale, ScanSearch, ShieldCheck, Wrench,
+  type LucideIcon,
+} from "lucide-react";
 import { Nav } from "@/components/site/nav";
 import { Terminal } from "@/components/site/terminal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -11,6 +16,37 @@ type Skill = { id: string; nivel: string; origen: string; scope: string };
 const modules = Object.values(catalog.modules) as Module[];
 const archs = Object.values(catalog.architectures) as Arch[];
 const skills = Object.values(catalog.skills) as Skill[];
+const REPO_URL = "https://github.com/manuelt15/toolkit-public";
+const NPM_URL = "https://www.npmjs.com/package/@manuelt15/toolkit";
+// Un icono por módulo, del mismo set que el resto de la página. Si el catálogo trae un módulo
+// nuevo sin icono aquí, sale el genérico.
+const MODULE_ICONS: Record<string, LucideIcon> = {
+  "agentes-ia": Bot,
+  analisis: ScanSearch,
+  auditoria: ShieldCheck,
+  auth: KeyRound,
+  datos: Database,
+  diseno: Palette,
+  email: Mail,
+  ingenieria: Wrench,
+  legal: Scale,
+  librerias: Package,
+  mapas: Map,
+  "next-react": Atom,
+  pagos: CreditCard,
+  "repo-seguridad": GitBranch,
+  testing: FlaskConical,
+};
+
+// Baldosa de icono con el radio de squircle del sistema (30%).
+function IconTile({ icon: Icon }: { icon: LucideIcon }) {
+  return (
+    <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-[30%] bg-canvas-soft text-ink">
+      <Icon aria-hidden className="size-5" strokeWidth={1.75} />
+    </span>
+  );
+}
+
 const moduleTitle = (id: string) => (catalog.modules as Record<string, Module>)[id]?.title ?? id;
 const ownSkills = skills.filter((s) => s.origen === "propia").length;
 
@@ -38,16 +74,19 @@ function Section({ id, eyebrow, title, lead, children }: { id: string; eyebrow: 
 const STEPS = [
   {
     n: "1",
+    icon: MessagesSquare,
     title: "Te pregunta lo justo.",
     text: "Qué vas a construir, el tipo de proyecto, los módulos y tu sistema de diseño. Lo que se puede deducir, como tus agentes o tu identidad de git, no lo pregunta.",
   },
   {
     n: "2",
+    icon: BookOpenText,
     title: "Te explica cada skill.",
     text: "Para qué sirve cada una, cuáles son obligatorias por tus módulos y cuáles ya tienes en global, con la opción de llevarlas también al proyecto.",
   },
   {
     n: "3",
+    icon: FolderCheck,
     title: "Deja el proyecto listo.",
     text: "AGENTS.md con el flujo de sesión, la memoria del proyecto, DESIGN.md si hay interfaz y un lock con todo lo instalado. Abres tu agente y ya sabe qué hacer.",
   },
@@ -143,7 +182,10 @@ export default function Home() {
           <ol className="grid gap-4 md:grid-cols-3">
             {STEPS.map((s) => (
               <li key={s.n} className="rounded-md border border-hairline-soft p-7">
-                <span className="inline-flex size-9 items-center justify-center rounded-full bg-canvas-soft font-mono text-[14px] font-semibold">{s.n}</span>
+                <div className="flex items-center justify-between">
+                  <IconTile icon={s.icon} />
+                  <span className="text-[14px] font-semibold text-text-faint">Paso {s.n}</span>
+                </div>
                 <h3 className="mt-6 text-[24px] leading-[1.25]">{s.title}</h3>
                 <p className="mt-3 text-[16px] leading-[1.45] text-text-muted">{s.text}</p>
               </li>
@@ -157,8 +199,9 @@ export default function Home() {
           title="Cada sesión deja dicho qué sigue."
           lead="Da igual que mañana abras otro agente: el proyecto guarda lo hecho, lo pendiente y lo decidido."
         >
+          {/* min-w-0: sin él, la línea más larga del terminal ensancha la columna y la página en móvil */}
           <div className="grid gap-6 lg:grid-cols-2">
-            <div>
+            <div className="min-w-0">
               <h3 className="mb-4 text-[20px] font-semibold">Al empezar, tk start.</h3>
               <Terminal
                 title="tk start"
@@ -174,7 +217,7 @@ export default function Home() {
                 ]}
               />
             </div>
-            <div>
+            <div className="min-w-0">
               <h3 className="mb-4 text-[20px] font-semibold">Al terminar, tk close.</h3>
               <Terminal
                 title="tk close"
@@ -204,7 +247,8 @@ export default function Home() {
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {modules.map((m) => (
               <li key={m.id} className="flex flex-col rounded-md border border-hairline-soft p-6">
-                <h3 className="text-[20px] leading-[1.3] font-semibold">{m.title}</h3>
+                <IconTile icon={MODULE_ICONS[m.id] ?? Blocks} />
+                <h3 className="mt-5 text-[20px] leading-[1.3] font-semibold">{m.title}</h3>
                 <p className="mt-1 text-[14px] text-text-faint">{m.when}</p>
                 <p className="mt-4 text-[15px] leading-[1.45]">{m.gives}</p>
                 <p className="mt-3 text-[14px] leading-[1.43] text-text-muted">
@@ -255,11 +299,11 @@ export default function Home() {
         <Section id="instalar" eyebrow="Instalar" title="Un comando y listo.">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
             <div>
-              <span className="inline-flex items-center rounded-full bg-signal px-3 py-1 text-[12px] font-semibold text-white">
-                Próximamente en npm
-              </span>
+              <a href={NPM_URL} className="inline-flex items-center rounded-full bg-signal px-3 py-1 text-[12px] font-semibold text-white transition-opacity hover:opacity-85">
+                En npm: @manuelt15/toolkit
+              </a>
               <p className="mt-5 max-w-md text-[20px] leading-[1.38] font-light text-text-muted">
-                tk todavía no está publicado. Cuando lo esté, se instala con un comando y se usa con tk en una carpeta vacía.
+                Se instala con un comando y se usa con tk en una carpeta vacía.
               </p>
               <ul className="mt-6 space-y-2 text-[15px] text-text-muted">
                 <li>Node 22 o superior.</li>
@@ -304,6 +348,9 @@ export default function Home() {
               <li><a href="#instalar" className="text-footer-foreground transition-opacity hover:opacity-60">Instalar</a></li>
             </ul>
             <ul className="space-y-3 text-footer-muted">
+              <li><a href={REPO_URL} className="text-footer-foreground transition-opacity hover:opacity-60">Código en GitHub</a></li>
+              <li><a href={NPM_URL} className="text-footer-foreground transition-opacity hover:opacity-60">Paquete en npm</a></li>
+              <li><a href={`${REPO_URL}/issues`} className="text-footer-foreground transition-opacity hover:opacity-60">Contacto: issues</a></li>
               <li>Licencia MIT.</li>
               <li>Se ofrece tal cual, sin soporte.</li>
               <li>Sin cookies ni analítica.</li>
