@@ -16,7 +16,9 @@ type Skill = { id: string; nivel: string; origen: string; scope: string };
 const modules = Object.values(catalog.modules) as Module[];
 const archs = Object.values(catalog.architectures) as Arch[];
 const skills = Object.values(catalog.skills) as Skill[];
-const REPO_URL = "https://github.com/manuelt15/toolkit-public";
+// false hasta que tk esté en npm y el repo sea público: evita enlaces que dan 404.
+const NPM_LIVE = false;
+const REPO_URL ="https://github.com/manuelt15/toolkit-public";
 const NPM_URL = "https://www.npmjs.com/package/@manuelt15/toolkit";
 // Un icono por módulo, del mismo set que el resto de la página. Si el catálogo trae un módulo
 // nuevo sin icono aquí, sale el genérico.
@@ -184,7 +186,7 @@ export default function Home() {
               <li key={s.n} className="rounded-md border border-hairline-soft p-7">
                 <div className="flex items-center justify-between">
                   <IconTile icon={s.icon} />
-                  <span className="text-[14px] font-semibold text-text-faint">Paso {s.n}</span>
+                  <span className="text-[14px] font-semibold text-text-muted">Paso {s.n}</span>
                 </div>
                 <h3 className="mt-6 text-[24px] leading-[1.25]">{s.title}</h3>
                 <p className="mt-3 text-[16px] leading-[1.45] text-text-muted">{s.text}</p>
@@ -249,7 +251,7 @@ export default function Home() {
               <li key={m.id} className="flex flex-col rounded-md border border-hairline-soft p-6">
                 <IconTile icon={MODULE_ICONS[m.id] ?? Blocks} />
                 <h3 className="mt-5 text-[20px] leading-[1.3] font-semibold">{m.title}</h3>
-                <p className="mt-1 text-[14px] text-text-faint">{m.when}</p>
+                <p className="mt-1 text-[14px] text-text-muted">{m.when}</p>
                 <p className="mt-4 text-[15px] leading-[1.45]">{m.gives}</p>
                 <p className="mt-3 text-[14px] leading-[1.43] text-text-muted">
                   <span className="font-semibold text-ink-soft">Cuesta: </span>
@@ -299,11 +301,19 @@ export default function Home() {
         <Section id="instalar" eyebrow="Instalar" title="Un comando y listo.">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
             <div>
-              <a href={NPM_URL} className="inline-flex items-center rounded-full bg-signal px-3 py-1 text-[12px] font-semibold text-white transition-opacity hover:opacity-85">
-                En npm: @manuelt15/toolkit
-              </a>
+              {NPM_LIVE ? (
+                <a href={NPM_URL} className="inline-flex items-center rounded-full bg-signal px-3 py-1 text-[12px] font-semibold text-white transition-opacity hover:opacity-85">
+                  En npm: @manuelt15/toolkit
+                </a>
+              ) : (
+                <span className="inline-flex items-center rounded-full bg-signal px-3 py-1 text-[12px] font-semibold text-white">
+                  Pronto en npm
+                </span>
+              )}
               <p className="mt-5 max-w-md text-[20px] leading-[1.38] font-light text-text-muted">
-                Se instala con un comando y se usa con tk en una carpeta vacía.
+                {NPM_LIVE
+                  ? "Se instala con un comando y se usa con tk en una carpeta vacía."
+                  : "tk estará disponible en npm en unos días. Entonces se instalará con un comando y se usará con tk en una carpeta vacía."}
               </p>
               <ul className="mt-6 space-y-2 text-[15px] text-text-muted">
                 <li>Node 22 o superior.</li>
@@ -348,9 +358,13 @@ export default function Home() {
               <li><a href="#instalar" className="text-footer-foreground transition-opacity hover:opacity-60">Instalar</a></li>
             </ul>
             <ul className="space-y-3 text-footer-muted">
-              <li><a href={REPO_URL} className="text-footer-foreground transition-opacity hover:opacity-60">Código en GitHub</a></li>
-              <li><a href={NPM_URL} className="text-footer-foreground transition-opacity hover:opacity-60">Paquete en npm</a></li>
-              <li><a href={`${REPO_URL}/issues`} className="text-footer-foreground transition-opacity hover:opacity-60">Contacto: issues</a></li>
+              {NPM_LIVE ? (
+                <>
+                  <li><a href={REPO_URL} className="text-footer-foreground transition-opacity hover:opacity-60">Código en GitHub</a></li>
+                  <li><a href={NPM_URL} className="text-footer-foreground transition-opacity hover:opacity-60">Paquete en npm</a></li>
+                  <li><a href={`${REPO_URL}/issues`} className="text-footer-foreground transition-opacity hover:opacity-60">Contacto: issues</a></li>
+                </>
+              ) : null}
               <li>Licencia MIT.</li>
               <li>Se ofrece tal cual, sin soporte.</li>
               <li>Sin cookies ni analítica.</li>
