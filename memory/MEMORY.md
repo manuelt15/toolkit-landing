@@ -6,3 +6,4 @@ arranque: mantenerlo corto.
 Baseline enlaces rotos: 0 (2026-11-07)
 
 - [Pendientes](pending.md) - lo abierto y lo decidido
+- [Handover 2026-11-07: landing](handovers-archive/HANDOVER-2026-11-07-landing.md) - landing completa (Next 16, DESIGN.md propio, modo oscuro, logos de agentes)
