@@ -1,0 +1,131 @@
+{
+  "toolkit": "0.0.0",
+  "creado": "2026-11-07",
+  "arquitectura": "landing",
+  "modulos": [
+    "repo-seguridad",
+    "diseno",
+    "next-react",
+    "legal"
+  ],
+  "opciones": {},
+  "agentes": [
+    "claude-code",
+    "codex",
+    "hermes-agent"
+  ],
+  "perfil": "manuelt15",
+  "git": {
+    "cuenta": "personal (manuelt15)",
+    "motivo": "elegida con --git"
+  },
+  "diseno": {
+    "origen": "file"
+  },
+  "skills": [
+    {
+      "id": "cierre",
+      "scope": "proyecto",
+      "origen": "propia",
+      "nivel": "incluida",
+      "version": "0.0.0",
+      "hash": "sha256-66ad2d09327eb623"
+    },
+    {
+      "id": "seguridad-rgpd",
+      "scope": "proyecto",
+      "origen": "propia",
+      "nivel": "obligatoria",
+      "version": "0.0.0",
+      "hash": "sha256-7a420e80fec019f9"
+    },
+    {
+      "id": "systematic-debugging",
+      "scope": "global",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "obra/superpowers",
+      "estado": "global"
+    },
+    {
+      "id": "verification-before-completion",
+      "scope": "global",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "obra/superpowers",
+      "estado": "global"
+    },
+    {
+      "id": "shadcn",
+      "scope": "proyecto",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "shadcn-ui/ui",
+      "estado": "instalada"
+    },
+    {
+      "id": "emil-design-eng",
+      "scope": "global",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "emilkowalski/skills",
+      "estado": "global"
+    },
+    {
+      "id": "next-best-practices",
+      "scope": "global",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "vercel-labs/openreview",
+      "estado": "global"
+    },
+    {
+      "id": "vercel-react-best-practices",
+      "scope": "global",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "vercel-labs/agent-skills",
+      "estado": "global"
+    },
+    {
+      "id": "nuevo-proyecto",
+      "scope": "global",
+      "origen": "propia",
+      "nivel": "incluida",
+      "version": "0.0.0",
+      "hash": null
+    },
+    {
+      "id": "grill-me",
+      "scope": "global",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "mattpocock/skills",
+      "estado": "pendiente"
+    },
+    {
+      "id": "find-skills",
+      "scope": "global",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "vercel-labs/skills",
+      "estado": "global"
+    },
+    {
+      "id": "humanizer",
+      "scope": "global",
+      "origen": "externa",
+      "nivel": "recomendada",
+      "repo": "blader/humanizer",
+      "estado": "global"
+    },
+    {
+      "id": "diseno-propio",
+      "scope": "proyecto",
+      "origen": "propia",
+      "nivel": "obligatoria",
+      "version": "0.0.0",
+      "hash": "sha256-4b7a0d6e02eacc18"
+    }
+  ]
+}

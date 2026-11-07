@@ -1,0 +1,1069 @@
+{
+  "version": 1,
+  "modules": {
+    "agentes-ia": {
+      "conflicts": [],
+      "options": {
+        "eve": [
+          "eve"
+        ],
+        "ai-sdk": [
+          "ai-sdk"
+        ]
+      },
+      "id": "agentes-ia",
+      "title": "Agentes IA",
+      "when": "Apps con agentes o funciones de IA",
+      "gives": "Agentes durables con eve o llamadas a modelos con AI SDK, con la skill de cada uno",
+      "costs": "Pago por uso del proveedor de modelos; cuenta en Vercel si usas eve o AI Gateway; obligaciones de transparencia del AI Act",
+      "requires": [],
+      "skills": []
+    },
+    "analisis": {
+      "conflicts": [],
+      "options": null,
+      "id": "analisis",
+      "title": "Análisis de código",
+      "when": "Repos grandes o heredados que hay que entender rápido",
+      "gives": "Grafo de conocimiento del código, docs y SQL en local con Graphify",
+      "costs": "Python 3.10+ y uv instalados; sin cuenta; la parte local es gratis",
+      "requires": [],
+      "skills": [
+        "graphify"
+      ]
+    },
+    "auditoria": {
+      "conflicts": [],
+      "options": null,
+      "id": "auditoria",
+      "title": "Auditoría de seguridad",
+      "when": "Antes de lanzar y tras cambios grandes de auth, pagos o datos",
+      "gives": "Auditoría en 6 fases con informe REPORT.md y avisos de seguridad mientras programas",
+      "costs": "Sin cuenta ni dinero; la auditoría ejecuta código del repo, mejor en sandbox",
+      "requires": [],
+      "skills": [
+        "security-audit",
+        "security-guidance"
+      ]
+    },
+    "auth": {
+      "conflicts": [],
+      "options": null,
+      "id": "auth",
+      "title": "Autenticación",
+      "when": "Proyectos con usuarios",
+      "gives": "Login con Better Auth (OAuth, enlace por correo, 2FA, organizaciones) y sus buenas prácticas de seguridad",
+      "costs": "Dependencia better-auth; app OAuth en cada proveedor que uses; secreto en variables de entorno",
+      "requires": [
+        "datos"
+      ],
+      "skills": [
+        "better-auth-best-practices",
+        "better-auth-security-best-practices",
+        "organization-best-practices"
+      ]
+    },
+    "datos": {
+      "conflicts": [],
+      "options": {
+        "neon": [
+          "neon-postgres"
+        ],
+        "turso": [
+          "turso-db"
+        ],
+        "mongodb": [
+          "mongodb-connection",
+          "mongodb-schema-design"
+        ]
+      },
+      "id": "datos",
+      "title": "Datos",
+      "when": "Si hay persistencia",
+      "gives": "Base de datos elegida (Neon, Turso o MongoDB) con su ORM, sus skills y región UE",
+      "costs": "Cuenta en el proveedor (todos tienen capa gratis); DPA aceptado; backups a probar",
+      "requires": [],
+      "skills": []
+    },
+    "diseno": {
+      "conflicts": [],
+      "options": null,
+      "id": "diseno",
+      "title": "Diseño",
+      "when": "Cualquier proyecto con interfaz",
+      "gives": "Componentes shadcn sobre Radix construidos desde tu sistema de diseño, skills de diseño y movimiento, y un lint que impide saltarse el sistema",
+      "costs": "Dependencias de shadcn y @shadcn/lint; definir DESIGN.md antes de la primera pantalla",
+      "requires": [],
+      "skills": [
+        "shadcn",
+        "design-taste-frontend",
+        "emil-design-eng",
+        "apple-design",
+        "animation-vocabulary",
+        "improve-animations",
+        "find-animation-opportunities",
+        "review-animations",
+        "pick-ui-library"
+      ]
+    },
+    "email": {
+      "conflicts": [],
+      "options": null,
+      "id": "email",
+      "title": "Email",
+      "when": "El proyecto envía correos",
+      "gives": "Plantillas con React Email y envío con Resend",
+      "costs": "Cuenta en Resend (capa gratis); dominio verificado con DNS; DPA aceptado",
+      "requires": [],
+      "skills": [
+        "resend",
+        "react-email",
+        "email-best-practices"
+      ]
+    },
+    "ingenieria": {
+      "conflicts": [],
+      "options": {
+        "mattpocock": [
+          "mattpocock-skills"
+        ],
+        "addyosmani": [
+          "addyosmani-agent-skills"
+        ]
+      },
+      "id": "ingenieria",
+      "title": "Ingeniería",
+      "when": "Proyectos medianos o grandes",
+      "gives": "Método de trabajo con skills pequeñas (spec, tickets, tdd, review, diagnóstico)",
+      "costs": "Nada en dinero; elegir una sola colección, se solapan",
+      "requires": [],
+      "skills": [
+        "finishing-a-development-branch"
+      ]
+    },
+    "legal": {
+      "conflicts": [],
+      "options": null,
+      "id": "legal",
+      "title": "Legal",
+      "when": "Proyectos con usuarios, antes de lanzar",
+      "gives": "Plantillas base de privacidad, términos, cookies y DPA (CC0)",
+      "costs": "Adaptarlas a LOPDGDD y LSSI-CE; revisión profesional si cobras o hay datos sensibles",
+      "requires": [],
+      "skills": []
+    },
+    "librerias": {
+      "conflicts": [],
+      "options": null,
+      "id": "librerias",
+      "title": "Librerías",
+      "when": "Según necesidad",
+      "gives": "Opción por defecto para cada necesidad (zod, Temporal, TanStack Table, Motion, nuqs...)",
+      "costs": "Cada librería es una dependencia y se confirma antes de instalarla",
+      "requires": [],
+      "skills": []
+    },
+    "mapas": {
+      "conflicts": [],
+      "options": null,
+      "id": "mapas",
+      "title": "Mapas",
+      "when": "Solo si el proyecto muestra mapas",
+      "gives": "Componentes de mapa estilo shadcn sobre MapLibre",
+      "costs": "Dependencias de MapLibre; proveedor de teselas (revisar coste y privacidad)",
+      "requires": [
+        "diseno"
+      ],
+      "skills": [
+        "mapcn"
+      ]
+    },
+    "next-react": {
+      "conflicts": [],
+      "options": null,
+      "id": "next-react",
+      "title": "Next.js y React",
+      "when": "Proyectos con Next.js",
+      "gives": "Convenciones de App Router y reglas de rendimiento de React",
+      "costs": "Nada",
+      "requires": [],
+      "skills": [
+        "next-best-practices",
+        "vercel-react-best-practices"
+      ]
+    },
+    "pagos": {
+      "conflicts": [],
+      "options": null,
+      "id": "pagos",
+      "title": "Pagos",
+      "when": "El proyecto cobra",
+      "gives": "Cobros, suscripciones y facturación con Stripe, decididos por webhook",
+      "costs": "Cuenta en Stripe y comisión por cobro; webhooks que mantener; DPA aceptado",
+      "requires": [],
+      "skills": [
+        "stripe"
+      ]
+    },
+    "repo-seguridad": {
+      "conflicts": [],
+      "options": null,
+      "id": "repo-seguridad",
+      "title": "Seguridad del repo",
+      "when": "Al crear el repo, en todos los proyectos",
+      "gives": "Gitleaks en cada commit, .env fuera de git y protecciones de GitHub con gh-secure",
+      "costs": "Gitleaks y pre-commit instalados; gh con permisos de admin en el repo",
+      "requires": [],
+      "skills": []
+    },
+    "testing": {
+      "conflicts": [],
+      "options": null,
+      "id": "testing",
+      "title": "Testing",
+      "when": "Si hay usuarios (tests mínimos de aislamiento) o el proyecto lo pide",
+      "gives": "Vitest de base y, a elegir, Playwright, Gherkin y Stryker; ciclo rojo-verde con el agente",
+      "costs": "Dependencias de desarrollo; Stryker es lento, solo en lógica crítica",
+      "requires": [],
+      "skills": [
+        "tdd",
+        "playwright"
+      ]
+    }
+  },
+  "architectures": {
+    "agente-ia": {
+      "id": "agente-ia",
+      "title": "Agente IA",
+      "for": "App centrada en agentes o IA",
+      "recommended": [
+        "repo-seguridad",
+        "agentes-ia",
+        "next-react",
+        "datos",
+        "auditoria"
+      ],
+      "optional": [
+        "auth",
+        "diseno",
+        "email",
+        "pagos",
+        "testing"
+      ]
+    },
+    "api": {
+      "id": "api",
+      "title": "API",
+      "for": "Backend sin interfaz",
+      "recommended": [
+        "repo-seguridad",
+        "datos",
+        "testing",
+        "auditoria"
+      ],
+      "optional": [
+        "auth",
+        "email",
+        "pagos",
+        "ingenieria"
+      ]
+    },
+    "herramienta": {
+      "id": "herramienta",
+      "title": "Herramienta",
+      "for": "Uso personal o interno, pocos usuarios",
+      "recommended": [
+        "repo-seguridad",
+        "next-react",
+        "datos"
+      ],
+      "optional": [
+        "diseno",
+        "auth",
+        "testing",
+        "analisis"
+      ]
+    },
+    "landing": {
+      "id": "landing",
+      "title": "Landing",
+      "for": "Web de marketing o estática",
+      "recommended": [
+        "repo-seguridad",
+        "diseno",
+        "next-react",
+        "legal"
+      ],
+      "optional": [
+        "email",
+        "mapas"
+      ]
+    },
+    "saas": {
+      "id": "saas",
+      "title": "SaaS",
+      "for": "App con usuarios, cuentas y pagos",
+      "recommended": [
+        "librerias",
+        "repo-seguridad",
+        "diseno",
+        "next-react",
+        "datos",
+        "auth",
+        "email",
+        "pagos",
+        "testing",
+        "auditoria",
+        "legal"
+      ],
+      "optional": [
+        "ingenieria",
+        "agentes-ia",
+        "mapas"
+      ]
+    }
+  },
+  "skills": {
+    "cierre": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": null,
+      "id": "cierre",
+      "para_que": "Deja handover, pendientes y lecciones para que la siguiente sesión sepa qué seguir",
+      "origen": "propia",
+      "scope": "proyecto",
+      "cuando": {
+        "siempre": true
+      },
+      "nivel": "incluida",
+      "licencia": "MIT"
+    },
+    "nuevo-proyecto": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": null,
+      "id": "nuevo-proyecto",
+      "para_que": "La parte con criterio del arranque, entender qué vas a construir y proponer módulos",
+      "origen": "propia",
+      "scope": "global",
+      "cuando": {
+        "siempre": true
+      },
+      "nivel": "incluida",
+      "licencia": "MIT"
+    },
+    "seguridad-rgpd": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": null,
+      "id": "seguridad-rgpd",
+      "para_que": "RGPD, LOPDGDD, LSSI-CE, AI Act y seguridad mínima, con lo que bloquea un lanzamiento",
+      "origen": "propia",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "auth",
+          "pagos",
+          "email",
+          "datos",
+          "legal",
+          "agentes-ia"
+        ]
+      },
+      "nivel": "obligatoria",
+      "licencia": "MIT"
+    },
+    "grill-me": {
+      "conflicts_with": [
+        "mattpocock-skills"
+      ],
+      "plugin_claude": null,
+      "instalar": "npx skills add mattpocock/skills --skill grill-me -g {agentes}",
+      "id": "grill-me",
+      "para_que": "Te interroga sobre el plan hasta cerrar las decisiones abiertas antes de codificar",
+      "origen": "externa",
+      "repo": "mattpocock/skills",
+      "scope": "global",
+      "cuando": {
+        "siempre": true
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "find-skills": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add vercel-labs/skills --skill find-skills -g {agentes}",
+      "id": "find-skills",
+      "para_que": "Busca e instala skills cuando falta algo",
+      "origen": "externa",
+      "repo": "vercel-labs/skills",
+      "scope": "global",
+      "cuando": {
+        "siempre": true
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "humanizer": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add blader/humanizer -g {agentes}",
+      "id": "humanizer",
+      "para_que": "Quita el tono de IA de los textos de la app y los documentos",
+      "origen": "externa",
+      "repo": "blader/humanizer",
+      "scope": "global",
+      "cuando": {
+        "siempre": true
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "systematic-debugging": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add obra/superpowers --skill systematic-debugging {agentes}",
+      "id": "systematic-debugging",
+      "para_que": "Depura buscando la causa raíz con evidencia antes de proponer arreglos",
+      "origen": "externa",
+      "repo": "obra/superpowers",
+      "scope": "proyecto",
+      "cuando": {
+        "siempre": true
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "verification-before-completion": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add obra/superpowers --skill verification-before-completion {agentes}",
+      "id": "verification-before-completion",
+      "para_que": "Obliga a ejecutar la verificación antes de decir que algo está hecho",
+      "origen": "externa",
+      "repo": "obra/superpowers",
+      "scope": "proyecto",
+      "cuando": {
+        "siempre": true
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "finishing-a-development-branch": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add obra/superpowers --skill finishing-a-development-branch {agentes}",
+      "id": "finishing-a-development-branch",
+      "para_que": "Guía para cerrar una rama terminada (merge, PR o descartar) sin dejar cabos sueltos",
+      "origen": "externa",
+      "repo": "obra/superpowers",
+      "scope": "proyecto",
+      "cuando": {
+        "siempre": true
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "shadcn": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add shadcn-ui/ui --skill shadcn {agentes}",
+      "id": "shadcn",
+      "para_que": "Añadir, componer y arreglar componentes shadcn (sobre Radix y tu DESIGN.md)",
+      "origen": "externa",
+      "repo": "shadcn-ui/ui",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "design-taste-frontend": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add Leonxlnx/taste-skill --skill design-taste-frontend {agentes}",
+      "id": "design-taste-frontend",
+      "para_que": "Evita interfaces genéricas (\"anti-slop\") con criterio de diseño",
+      "origen": "externa",
+      "repo": "Leonxlnx/taste-skill",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "emil-design-eng": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add emilkowalski/skills --skill emil-design-eng {agentes}",
+      "id": "emil-design-eng",
+      "para_que": "Pulido de UI y los detalles invisibles que hacen que una interfaz se sienta bien",
+      "origen": "externa",
+      "repo": "emilkowalski/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "apple-design": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add emilkowalski/skills --skill apple-design {agentes}",
+      "id": "apple-design",
+      "para_que": "Movimiento físico, gestos, materiales y tipografía al estilo Apple, para web",
+      "origen": "externa",
+      "repo": "emilkowalski/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "animation-vocabulary": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add emilkowalski/skills --skill animation-vocabulary {agentes}",
+      "id": "animation-vocabulary",
+      "para_que": "Da el nombre exacto de un efecto de animación que sabes describir pero no nombrar",
+      "origen": "externa",
+      "repo": "emilkowalski/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "improve-animations": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add emilkowalski/skills --skill improve-animations {agentes}",
+      "id": "improve-animations",
+      "para_que": "Audita las animaciones existentes y deja un plan de mejoras priorizado",
+      "origen": "externa",
+      "repo": "emilkowalski/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "find-animation-opportunities": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add emilkowalski/skills --skill find-animation-opportunities {agentes}",
+      "id": "find-animation-opportunities",
+      "para_que": "Busca dónde falta movimiento y descarta dónde sobraría",
+      "origen": "externa",
+      "repo": "emilkowalski/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "review-animations": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add emilkowalski/skills --skill review-animations {agentes}",
+      "id": "review-animations",
+      "para_que": "Revisa el código de animación con un listón alto; aprobar hay que ganárselo",
+      "origen": "externa",
+      "repo": "emilkowalski/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "pick-ui-library": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add emilkowalski/skills --skill pick-ui-library {agentes}",
+      "id": "pick-ui-library",
+      "para_que": "Elige la librería adecuada para cada pieza de frontend (gráficas, toasts, OTP...)",
+      "origen": "externa",
+      "repo": "emilkowalski/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "diseno"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "mapcn": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add AnmolSaini16/mapcn --skill mapcn {agentes}",
+      "id": "mapcn",
+      "para_que": "Mapas en React con componentes estilo shadcn sobre MapLibre",
+      "origen": "externa",
+      "repo": "AnmolSaini16/mapcn",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "mapas"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "next-best-practices": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add vercel-labs/openreview --skill next-best-practices {agentes}",
+      "id": "next-best-practices",
+      "para_que": "Convenciones de Next.js App Router, RSC, datos, metadata y route handlers",
+      "origen": "externa",
+      "repo": "vercel-labs/openreview",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "next-react"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "NONE",
+      "verificado": "2026-11-07"
+    },
+    "vercel-react-best-practices": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices {agentes}",
+      "id": "vercel-react-best-practices",
+      "para_que": "Reglas de rendimiento de React y Next.js de Vercel",
+      "origen": "externa",
+      "repo": "vercel-labs/agent-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "next-react"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "NONE",
+      "verificado": "2026-11-07"
+    },
+    "better-auth-best-practices": {
+      "conflicts_with": [],
+      "plugin_claude": "auth-skills@better-auth-agent-skills",
+      "instalar": "npx skills add better-auth/skills --skill better-auth-best-practices {agentes}",
+      "id": "better-auth-best-practices",
+      "para_que": "Configurar Better Auth bien (sesiones, proveedores, plugins)",
+      "origen": "externa",
+      "repo": "better-auth/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "auth"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "NONE",
+      "verificado": "2026-11-07"
+    },
+    "better-auth-security-best-practices": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add better-auth/skills --skill better-auth-security-best-practices {agentes}",
+      "id": "better-auth-security-best-practices",
+      "para_que": "Seguridad de Better Auth (secretos, rate limit, CSRF, sesiones)",
+      "origen": "externa",
+      "repo": "better-auth/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "auth"
+        ]
+      },
+      "nivel": "obligatoria",
+      "licencia": "NONE",
+      "verificado": "2026-11-07"
+    },
+    "organization-best-practices": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add better-auth/skills --skill organization-best-practices {agentes}",
+      "id": "organization-best-practices",
+      "para_que": "Organizaciones, equipos y roles con Better Auth",
+      "origen": "externa",
+      "repo": "better-auth/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "auth"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "NONE",
+      "verificado": "2026-11-07"
+    },
+    "neon-postgres": {
+      "conflicts_with": [],
+      "plugin_claude": "neon-postgres@neon",
+      "instalar": "npx skills add neondatabase/agent-skills --skill neon-postgres {agentes}",
+      "id": "neon-postgres",
+      "para_que": "Neon Postgres (conexión, ramas, Drizzle) con su MCP en Claude",
+      "origen": "externa",
+      "repo": "neondatabase/agent-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "datos"
+        ],
+        "opcion": "neon"
+      },
+      "nivel": "recomendada",
+      "licencia": "Apache-2.0",
+      "verificado": "2026-11-07"
+    },
+    "turso-db": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add tursodatabase/agent-skills --skill turso-db {agentes}",
+      "id": "turso-db",
+      "para_que": "Turso (SQLite/libSQL) con buenas prácticas de conexión y réplicas",
+      "origen": "externa",
+      "repo": "tursodatabase/agent-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "datos"
+        ],
+        "opcion": "turso"
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "mongodb-connection": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add mongodb/agent-skills --skill mongodb-connection {agentes}",
+      "id": "mongodb-connection",
+      "para_que": "Conexión a MongoDB bien configurada (pool, timeouts, errores)",
+      "origen": "externa",
+      "repo": "mongodb/agent-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "datos"
+        ],
+        "opcion": "mongodb"
+      },
+      "nivel": "recomendada",
+      "licencia": "Apache-2.0",
+      "verificado": "2026-11-07"
+    },
+    "mongodb-schema-design": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add mongodb/agent-skills --skill mongodb-schema-design {agentes}",
+      "id": "mongodb-schema-design",
+      "para_que": "Diseño de esquemas de documentos en MongoDB",
+      "origen": "externa",
+      "repo": "mongodb/agent-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "datos"
+        ],
+        "opcion": "mongodb"
+      },
+      "nivel": "recomendada",
+      "licencia": "Apache-2.0",
+      "verificado": "2026-11-07"
+    },
+    "resend": {
+      "conflicts_with": [],
+      "plugin_claude": "resend/resend-skills",
+      "instalar": "npx skills add resend/resend-skills --skill resend {agentes}",
+      "id": "resend",
+      "para_que": "Enviar correos con Resend (API, dominios, webhooks)",
+      "origen": "externa",
+      "repo": "resend/resend-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "email"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "react-email": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add resend/resend-skills --skill react-email {agentes}",
+      "id": "react-email",
+      "para_que": "Plantillas de correo con React Email",
+      "origen": "externa",
+      "repo": "resend/resend-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "email"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "email-best-practices": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add resend/resend-skills --skill email-best-practices {agentes}",
+      "id": "email-best-practices",
+      "para_que": "Entregabilidad, SPF/DKIM/DMARC y correos transaccionales que llegan",
+      "origen": "externa",
+      "repo": "resend/resend-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "email"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "stripe": {
+      "conflicts_with": [],
+      "plugin_claude": "stripe@claude-plugins-official",
+      "instalar": "npx skills add https://docs.stripe.com {agentes}",
+      "id": "stripe",
+      "para_que": "Cobros, suscripciones y webhooks de Stripe con sus buenas prácticas",
+      "origen": "externa",
+      "repo": "docs.stripe.com",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "pagos"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "NONE",
+      "verificado": false
+    },
+    "mattpocock-skills": {
+      "conflicts_with": [
+        "addyosmani-agent-skills"
+      ],
+      "plugin_claude": "mattpocock-skills@claude-plugins-official",
+      "instalar": "npx skills add mattpocock/skills {agentes}",
+      "id": "mattpocock-skills",
+      "para_que": "Colección de Matt Pocock (grill-me, tdd, to-spec, to-tickets, diagnosing-bugs, code-review...)",
+      "origen": "externa",
+      "repo": "mattpocock/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "ingenieria"
+        ],
+        "opcion": "mattpocock"
+      },
+      "nivel": "recomendada",
+      "incluye": [
+        "grill-me",
+        "tdd"
+      ],
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "addyosmani-agent-skills": {
+      "conflicts_with": [
+        "mattpocock-skills"
+      ],
+      "plugin_claude": "agent-skills@addy-agent-skills",
+      "instalar": "npx skills add addyosmani/agent-skills {agentes}",
+      "id": "addyosmani-agent-skills",
+      "para_que": "Colección de Addy Osmani (/spec, /plan, /build, /test, /review, /ship)",
+      "origen": "externa",
+      "repo": "addyosmani/agent-skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "ingenieria"
+        ],
+        "opcion": "addyosmani"
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "tdd": {
+      "conflicts_with": [
+        "mattpocock-skills"
+      ],
+      "plugin_claude": null,
+      "instalar": "npx skills add mattpocock/skills --skill tdd {agentes}",
+      "id": "tdd",
+      "para_que": "Ciclo rojo-verde-refactor con el agente",
+      "origen": "externa",
+      "repo": "mattpocock/skills",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "testing"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "playwright": {
+      "conflicts_with": [],
+      "plugin_claude": "playwright@claude-plugins-official",
+      "instalar": "MCP @playwright/mcp (comando según agente, a verificar en F2)",
+      "id": "playwright",
+      "para_que": "El agente abre el navegador y prueba el flujo principal de punta a punta",
+      "origen": "externa",
+      "repo": "microsoft/playwright-mcp",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "testing"
+        ]
+      },
+      "nivel": "opcional",
+      "licencia": "Apache-2.0",
+      "verificado": false
+    },
+    "security-audit": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add cloudflare/security-audit-skill --skill security-audit {agentes}",
+      "id": "security-audit",
+      "para_que": "Auditoría de seguridad en 6 fases con verificación adversarial y REPORT.md",
+      "origen": "externa",
+      "repo": "cloudflare/security-audit-skill",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "auditoria"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "MIT",
+      "verificado": "2026-11-07"
+    },
+    "security-guidance": {
+      "conflicts_with": [],
+      "plugin_claude": "security-guidance@claude-plugins-official",
+      "instalar": null,
+      "id": "security-guidance",
+      "para_que": "Avisos de seguridad mientras se programa (solo Claude)",
+      "origen": "externa",
+      "repo": "anthropics/claude-plugins-official",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "auditoria"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "NONE",
+      "verificado": "2026-11-07"
+    },
+    "graphify": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "uv tool install graphifyy && graphify install",
+      "id": "graphify",
+      "para_que": "Grafo de conocimiento del codebase en local para entender repos grandes",
+      "origen": "externa",
+      "repo": "Graphify-Labs/graphify",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "analisis"
+        ]
+      },
+      "nivel": "recomendada",
+      "licencia": "Apache-2.0",
+      "verificado": "2026-11-07"
+    },
+    "eve": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add vercel/eve --skill eve {agentes}",
+      "id": "eve",
+      "para_que": "Construir agentes durables con eve (sesiones, herramientas, sandboxes, schedules)",
+      "origen": "externa",
+      "repo": "vercel/eve",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "agentes-ia"
+        ],
+        "opcion": "eve"
+      },
+      "nivel": "recomendada",
+      "licencia": "Apache-2.0",
+      "verificado": "2026-11-07"
+    },
+    "ai-sdk": {
+      "conflicts_with": [],
+      "plugin_claude": null,
+      "instalar": "npx skills add vercel/ai --skill ai-sdk {agentes}",
+      "id": "ai-sdk",
+      "para_que": "Funciones de IA con AI SDK (texto, streaming, tools, salida estructurada)",
+      "origen": "externa",
+      "repo": "vercel/ai",
+      "scope": "proyecto",
+      "cuando": {
+        "modulos": [
+          "agentes-ia"
+        ],
+        "opcion": "ai-sdk"
+      },
+      "nivel": "recomendada",
+      "licencia": "NOASSERTION",
+      "verificado": "2026-11-07"
+    }
+  }
+}
