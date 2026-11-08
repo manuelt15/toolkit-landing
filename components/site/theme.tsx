@@ -45,6 +45,7 @@ function suscribir(aviso: () => void) {
 
 export function ThemeToggle({ className }: { className?: string }) {
   const tema = useSyncExternalStore<Tema | null>(suscribir, leer, () => null);
+  const indice = OPCIONES.findIndex((o) => o.value === tema);
 
   useEffect(() => {
     if (tema === null) return;
@@ -65,7 +66,16 @@ export function ThemeToggle({ className }: { className?: string }) {
   };
 
   return (
-    <div role="radiogroup" aria-label="Tema" className={cn("flex items-center gap-0.5 rounded-full bg-hairline-soft p-1 dark:bg-field", className)}>
+    <div role="radiogroup" aria-label="Tema" className={cn("relative flex items-center gap-0.5 rounded-full bg-hairline-soft p-1 dark:bg-field", className)}>
+      {/* Indicador que se desliza a la opción activa (32 px de botón + 2 px de hueco por paso).
+          Solo existe ya hidratado: su primer pintado cae en su sitio, sin animar. */}
+      {indice >= 0 ? (
+        <span
+          aria-hidden
+          className="indicador-tema absolute top-1 left-1 size-8 rounded-full bg-background shadow-[0_1px_2px_rgb(0_0_0/0.08)] transition-transform duration-200 ease-glide"
+          style={{ transform: `translateX(${indice * 34}px)` }}
+        />
+      ) : null}
       {OPCIONES.map(({ value, label, Icon }) => {
         const activo = tema === value;
         return (
@@ -78,8 +88,8 @@ export function ThemeToggle({ className }: { className?: string }) {
             title={label}
             onClick={() => elegir(value)}
             className={cn(
-              "inline-flex size-8 items-center justify-center rounded-full text-text-muted transition-colors hover:text-ink",
-              activo && "bg-background text-ink shadow-[0_1px_2px_rgb(0_0_0/0.08)]",
+              "relative inline-flex size-8 items-center justify-center rounded-full text-text-muted transition-colors hover:text-ink",
+              activo && "text-ink",
             )}
           >
             <Icon className="size-4" strokeWidth={1.75} />

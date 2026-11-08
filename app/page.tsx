@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { Nav } from "@/components/site/nav";
 import { Terminal } from "@/components/site/terminal";
+import { Revela } from "@/components/site/revela";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 // Todo lo que cuenta la página sale del catálogo real de tk (content/catalog.json),
 // así la web no promete nada que el paquete no tenga.
@@ -65,10 +66,13 @@ const AGENTS: { name: string; light: string; dark?: string }[] = [
 function Section({ id, eyebrow, title, lead, children }: { id: string; eyebrow: string; title: string; lead?: string; children: React.ReactNode }) {
   return (
     <section id={id} className="mx-auto w-full max-w-6xl px-6 py-20 md:py-28">
-      <p className="mb-4 text-[14px] font-semibold text-text-muted">{eyebrow}</p>
-      <h2 className="max-w-3xl text-[36px] leading-[1.08] md:text-[44px] md:leading-[1.13]">{title}</h2>
-      {lead ? <p className="mt-5 max-w-2xl text-[20px] leading-[1.38] font-light text-text-muted">{lead}</p> : null}
-      <div className="mt-12">{children}</div>
+      {/* Cabecera y contenido entran como dos bloques, no tarjeta a tarjeta */}
+      <Revela>
+        <p className="mb-4 text-[14px] font-semibold text-text-muted">{eyebrow}</p>
+        <h2 className="max-w-3xl text-[36px] leading-[1.08] md:text-[44px] md:leading-[1.13]">{title}</h2>
+        {lead ? <p className="mt-5 max-w-2xl text-[20px] leading-[1.38] font-light text-text-muted">{lead}</p> : null}
+      </Revela>
+      <Revela className="mt-12">{children}</Revela>
     </section>
   );
 }
@@ -125,21 +129,24 @@ export default function Home() {
         {/* Hero */}
         <section className="mx-auto grid w-full max-w-6xl gap-14 px-6 pt-20 pb-16 md:pt-28 lg:grid-cols-[1.05fr_1fr] lg:items-center">
           <div>
-            <h1 className="text-[48px] leading-[1.0] sm:text-[64px] lg:text-[72px]">
+            <h1 className="entra text-[48px] leading-[1.0] sm:text-[64px] lg:text-[72px]">
               Empieza proyectos con agentes. Sin partir de cero.
             </h1>
-            <p className="mt-7 max-w-xl text-[20px] leading-[1.38] font-light text-text-muted">
+            <p className="entra mt-7 max-w-xl text-[20px] leading-[1.38] font-light text-text-muted" style={{ "--d": "60ms" } as React.CSSProperties}>
               tk te pregunta qué vas a construir, te propone módulos y skills explicando para qué sirve cada una, y deja el proyecto listo para que Claude Code, Codex o Hermes sigan donde lo dejó la sesión anterior.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a href="#instalar" className="inline-flex h-12 items-center rounded-full bg-primary px-6 text-[16px] font-semibold text-primary-foreground transition-colors hover:bg-primary/85">
+            <div className="entra mt-10 flex flex-wrap items-center gap-3" style={{ "--d": "120ms" } as React.CSSProperties}>
+              <a href="#instalar" className="inline-flex h-12 items-center rounded-full bg-primary px-6 text-[16px] font-semibold text-primary-foreground transition-[background-color,scale] duration-160 ease-snappy hover:bg-primary/85 active:scale-[0.97]">
                 Cómo instalarlo
               </a>
-              <a href="#como-funciona" className="inline-flex h-12 items-center rounded-full bg-canvas-soft px-6 text-[16px] font-semibold text-ink transition-colors hover:bg-hairline">
+              <a href="#como-funciona" className="inline-flex h-12 items-center rounded-full bg-canvas-soft px-6 text-[16px] font-semibold text-ink transition-[background-color,scale] duration-160 ease-snappy hover:bg-hairline active:scale-[0.97]">
                 Ver cómo funciona
               </a>
             </div>
           </div>
+          {/* Las líneas salen una a una cuando el terminal está a la vista (en móvil queda por
+              debajo del pliegue): enseña cómo trabaja tk sin decirlo. min-w-0: hijo de la rejilla */}
+          <Revela className="min-w-0">
           <Terminal
             title="mi-proyecto"
             lines={[
@@ -156,10 +163,11 @@ export default function Home() {
               { text: "└  Proyecto listo. Abre tu agente aquí.", tone: "ok" },
             ]}
           />
+          </Revela>
         </section>
 
         {/* Agentes */}
-        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-8 gap-y-4 px-6 pb-8">
+        <div className="entra mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-8 gap-y-4 px-6 pb-8" style={{ "--d": "240ms" } as React.CSSProperties}>
           <span className="text-[14px] text-text-muted">Funciona con</span>
           {AGENTS.map((a) => (
             <span key={a.name} className="inline-flex items-center gap-2.5 text-[16px] font-semibold text-ink">
@@ -302,7 +310,7 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
             <div>
               {NPM_LIVE ? (
-                <a href={NPM_URL} className="inline-flex items-center rounded-full bg-signal px-3 py-1 text-[12px] font-semibold text-white transition-opacity hover:opacity-85">
+                <a href={NPM_URL} className="inline-flex items-center rounded-full bg-signal px-3 py-1 text-[12px] font-semibold text-white transition-[opacity,scale] duration-160 ease-snappy hover:opacity-85 active:scale-[0.97]">
                   En npm: @manuelt15/toolkit
                 </a>
               ) : (

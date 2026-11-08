@@ -7,6 +7,14 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Curvas de movimiento (criterio de Emil Kowalski): las de serie de CSS son demasiado blandas.
+   ease-snappy para lo que entra o responde a una pulsación; ease-glide para lo que se desplaza
+   en pantalla. Dan las utilidades ease-snappy y ease-glide. */
+@theme {
+  --ease-snappy: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-glide: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -151,7 +159,63 @@
   .sin-transicion, .sin-transicion * {
     transition: none !important;
   }
+  /* El indicador del selector de tema sí se desliza aunque el cambio de tema congele el resto */
+  .sin-transicion .indicador-tema {
+    transition: transform 200ms var(--ease-glide) !important;
+  }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+  }
+}
+
+/* Entradas. Solo transform y opacity. Se ocultan solo si hay JavaScript (scripting: enabled):
+   sin él, todo se ve tal cual. Con movimiento reducido: solo opacidad, sin desplazamiento, y los
+   terminales completos desde el principio. */
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(8px); }
+}
+@keyframes entrada-suave {
+  from { opacity: 0; }
+}
+@keyframes linea {
+  from { opacity: 0; transform: translateY(4px); }
+}
+
+/* Portada: una sola vez al cargar, escalonada con --d (el terminal entra con Revela) */
+.entra {
+  animation: entrada 400ms var(--ease-snappy) both;
+  animation-delay: var(--d, 0ms);
+}
+
+/* Bloques que entran al hacer scroll (componente Revela añade data-dentro una sola vez) */
+@media (scripting: enabled) {
+  .revela:not([data-dentro]) {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  .revela {
+    transition: opacity 500ms var(--ease-snappy), transform 500ms var(--ease-snappy);
+  }
+  /* Líneas de terminal: salen una a una, como un CLI de verdad */
+  .revela:not([data-dentro]) .linea {
+    opacity: 0;
+  }
+}
+.revela[data-dentro] .linea {
+  animation: linea 260ms var(--ease-snappy) both;
+  animation-delay: calc(var(--retardo, 250ms) + var(--i, 0) * 70ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .entra {
+    animation-name: entrada-suave;
+  }
+  .revela,
+  .revela:not([data-dentro]) {
+    transform: none;
+  }
+  .revela[data-dentro] .linea,
+  .revela:not([data-dentro]) .linea {
+    animation: none;
+    opacity: 1;
   }
 }

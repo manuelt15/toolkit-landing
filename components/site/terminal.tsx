@@ -3,11 +3,12 @@ import { cn } from "@/lib/utils";
 type Line = { text: string; tone?: "prompt" | "muted" | "ok" | "plain" };
 
 // Bloque de terminal: el "contenido" que aporta el color en este sistema monocromo.
-export function Terminal({ title, lines, className }: { title?: string; lines: Line[]; className?: string }) {
+export function Terminal({ title, lines, className, style }: { title?: string; lines: Line[]; className?: string; style?: React.CSSProperties }) {
   return (
     <figure
       className={cn("overflow-hidden rounded-md bg-terminal text-left dark:ring-1 dark:ring-hairline text-[11px] leading-[1.6] sm:text-[13px] text-white", className)}
       aria-label={title ? `Terminal: ${title}` : "Terminal"}
+      style={style}
     >
       <div className="flex items-center gap-2 px-4 pt-4 pb-2 sm:px-5">
         <span className="size-2.5 rounded-full bg-white/20" />
@@ -20,8 +21,9 @@ export function Terminal({ title, lines, className }: { title?: string; lines: L
           {lines.map((l, i) => (
             <span
               key={i}
+              style={{ "--i": i } as React.CSSProperties}
               className={cn(
-                "block whitespace-pre",
+                "linea block whitespace-pre",
                 l.tone === "prompt" && "text-white",
                 l.tone === "muted" && "text-white/45",
                 l.tone === "ok" && "text-white/80",
