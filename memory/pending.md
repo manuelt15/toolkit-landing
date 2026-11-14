@@ -2,10 +2,8 @@
 
 ## ⏳ Abierto
 
-- Cuando tk esté en npm y `toolkit-public` sea público (tras el 2026-11-09 23:40 UTC):
-  `NPM_LIVE = true` en `app/page.tsx` y push. Vuelven los enlaces a GitHub, npm e issues
-  (hoy la web no tiene ningún contacto visible).
-- Actualizar `content/catalog.json` cuando cambie el catálogo de toolkit-public.
+- Actualizar `content/catalog.json` cuando cambie el catálogo de toolkit-public. La sección
+  "Por qué existe" depende de él: autores (campo `repo`) y el número de skills propias.
 - Módulo `repo-seguridad`: Gitleaks en cada commit, .env fuera de git y protecciones de GitHub con gh-secure. Pasos en `docs/toolkit/modulos/repo-seguridad.md`.
 - Módulo `diseno`: falta `@shadcn/lint` (paso del módulo). Pasos en `docs/toolkit/modulos/diseno.md`.
 - Instalar la skill `grill-me`: `npx skills add mattpocock/skills --skill grill-me -g -a claude-code -a codex -a hermes-agent -y`
