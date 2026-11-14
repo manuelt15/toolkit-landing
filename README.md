@@ -9,6 +9,8 @@ con agentes de IA (Claude Code, Codex y Hermes).
 
 ## Qué cuenta
 
+- **Por qué existe:** tk nace de cómo trabajo con agentes y se publica por si le sirve a
+  alguien más. Lista los autores de las skills de terceros, sacados del catálogo.
 - **Cómo funciona:** el asistente pregunta lo justo, explica cada skill y deja el proyecto
   listo para el agente.
 - **Sesiones:** `tk start` al empezar y `tk close` al terminar, con un handover para la
@@ -50,8 +52,8 @@ npm run build
 
 - **Tema claro, oscuro o del sistema**, guardado en el navegador del visitante.
 - **Sin cookies, analítica ni formularios.** Cabeceras de seguridad en `next.config.ts`.
-- **`NPM_LIVE`** en `app/page.tsx`: mientras es `false`, la sección de instalar dice
-  "Pronto en npm" y se ocultan los enlaces al repo y al paquete, que aún darían 404.
+- **`NPM_LIVE`** en `app/page.tsx`: `true` desde que tk está en npm. Con `false`, la
+  sección de instalar dice "Pronto en npm" y se ocultan los enlaces al repo y al paquete.
 
 ## Despliegue
 

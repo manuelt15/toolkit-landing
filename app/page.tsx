@@ -17,8 +17,8 @@ type Skill = { id: string; nivel: string; origen: string; scope: string };
 const modules = Object.values(catalog.modules) as Module[];
 const archs = Object.values(catalog.architectures) as Arch[];
 const skills = Object.values(catalog.skills) as Skill[];
-// false hasta que tk esté en npm y el repo sea público: evita enlaces que dan 404.
-const NPM_LIVE = false;
+// true desde que tk está en npm y el repo es público (false ocultaba enlaces que daban 404).
+const NPM_LIVE = true;
 const REPO_URL ="https://github.com/manuelt15/toolkit-public";
 const NPM_URL = "https://www.npmjs.com/package/@manuelt15/toolkit";
 // Un icono por módulo, del mismo set que el resto de la página. Si el catálogo trae un módulo
@@ -52,6 +52,38 @@ function IconTile({ icon: Icon }: { icon: LucideIcon }) {
 
 const moduleTitle = (id: string) => (catalog.modules as Record<string, Module>)[id]?.title ?? id;
 const ownSkills = skills.filter((s) => s.origen === "propia").length;
+
+// Autores de las skills de terceros, sacados del campo repo del catálogo: el dueño en GitHub
+// (owner/repo) o el sitio de origen cuando no es un repositorio. Primero los que más aportan.
+const AUTHORS = Object.entries(
+  (Object.values(catalog.skills) as { origen: string; repo?: string | null }[]).reduce<Record<string, number>>((acc, s) => {
+    if (s.origen === "propia" || !s.repo) return acc;
+    const key = s.repo.includes("/") ? s.repo.split("/")[0] : s.repo;
+    acc[key] = (acc[key] ?? 0) + 1;
+    return acc;
+  }, {}),
+)
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .map(([key]) => ({ label: key, href: key.includes(".") ? `https://${key}` : `https://github.com/${key}` }));
+
+// Cada frase se apoya en lo que hacen de verdad las skills y tk close; si cambian, cambia esto.
+const WHY = [
+  {
+    icon: Blocks,
+    title: "Las skills que más uso, en su origen.",
+    text: `Las de otras personas que me sirven al empezar un proyecto, junto a ${ownSkills} propias. tk no las copia: enseña el comando y las instala desde su origen, con su licencia.`,
+  },
+  {
+    icon: ShieldCheck,
+    title: "Flujos con IA que no sean genéricos ni peligrosos.",
+    text: "diseno-propio hace que la interfaz salga de tu DESIGN.md y no de valores por defecto. seguridad-rgpd aplica RGPD y seguridad mínima, con una validación antes de cada lanzamiento. tk close comprueba en cada cierre que no haya un .env en git.",
+  },
+  {
+    icon: BookOpenText,
+    title: "Cada sesión, legible para el siguiente agente.",
+    text: "tk start enseña lo pendiente y el último handover; tk close deja lo hecho, lo pendiente y lo decidido. Cualquier agente, mañana u otro distinto, sigue desde ahí.",
+  },
+];
 
 // Solo el símbolo de cada marca, sin fondo: Claude y Codex sacados de los iconos de skills.sh
 // (el trazo, sin el cuadro), Claude en su naranja y Codex en blanco y negro (OpenAI no admite
@@ -182,6 +214,36 @@ export default function Home() {
             </span>
           ))}
         </div>
+
+        <Section
+          id="por-que"
+          eyebrow="Por qué existe"
+          title="Nació de mi forma de trabajar. Si también te sirve, mejor."
+          lead="tk recoge cómo empiezo y cierro mis proyectos con agentes: las skills que uso, las normas que sigo y la memoria que dejo en cada sesión. Lo publico tal cual, por si le sirve a alguien más."
+        >
+          <ul className="grid gap-4 md:grid-cols-3">
+            {WHY.map((w) => (
+              <li key={w.title} className="rounded-md border border-hairline-soft p-7">
+                <IconTile icon={w.icon} />
+                <h3 className="mt-6 text-[20px] leading-[1.3] font-semibold">{w.title}</h3>
+                <p className="mt-3 text-[16px] leading-[1.45] text-text-muted">{w.text}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 text-[14px] font-semibold text-text-muted">Con skills de</p>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {AUTHORS.map((a) => (
+              <li key={a.label}>
+                <a
+                  href={a.href}
+                  className="inline-flex h-8 items-center rounded-full bg-canvas-soft px-3 font-mono text-[13px] text-ink transition-colors hover:bg-hairline"
+                >
+                  {a.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Section>
 
         <Section
           id="como-funciona"
